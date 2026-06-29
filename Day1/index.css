@@ -27,6 +27,8 @@ input{
     border: 2px solid red;
     height: 100%;
     width:60%;
+    display: flex;
+    flex-wrap: wrap;
 }
 button{
     padding: 10px;
