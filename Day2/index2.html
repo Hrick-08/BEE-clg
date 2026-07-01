@@ -6,39 +6,39 @@
     <title>Document</title>
     <style>
         body{
-    padding:20px;
-    font-family:Arial, sans-serif;
-    }
+            padding:20px;
+            font-family:Arial, sans-serif;
+        }
 
-    div{
-        margin-bottom:15px;
-    }
+        div{
+            margin-bottom:15px;
+        }
 
-    label{
-        display:block;
-        margin-bottom:5px;
-    }
+        label{
+            display:block;
+            margin-bottom:5px;
+        }
 
-    input{
-        padding:8px;
-        width:250px;
-    }
+        input{
+            padding:8px;
+            width:250px;
+        }
 
-    button{
-        padding:8px 15px;
-    }
+        button{
+            padding:8px 15px;
+        }
 
-    table{
-        margin-top:15px;
-        border-collapse:collapse;
-    }
+        table{
+            margin-top:15px;
+            border-collapse:collapse;
+        }
 
-    th,td{
-        padding:10px;
-    }
-    #hideData{
-        display: none;
-    }
+        th,td{
+            padding:10px;
+        }
+        #hideData{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -76,29 +76,27 @@
             </table>
         </div>
     </form>
-</body>
-</html>
-<script>
-    var btn = document.getElementById("submit")
-    btn.addEventListener("click",function(e){
-        e.preventDefault()
-        var name = document.getElementById("name")
-        var email = document.getElementById("email")
-        var age = document.getElementById("age") 
+    <script>
+        var btn = document.getElementById("submit")
+        btn.addEventListener("click",function(e){
+            e.preventDefault()
+            var name = document.getElementById("name")
+            var email = document.getElementById("email")
+            var age = document.getElementById("age") 
 
-        var inpName = name.value 
-        var inpEmail = email.value
-        var inpAge = age.value
-        var tbody = document.getElementById("tableContent")
-        tbody.innerHTML += `
-            <tr>
-                <td> ${inpName}</td>
-                <td>${inpEmail}</td>
-                <td>${inpAge}</td>
-            </tr>
-        `
-        document.getElementById("hideData").style.display = "block";
-    })
-</script>
+            var inpName = name.value 
+            var inpEmail = email.value
+            var inpAge = age.value
+            var tbody = document.getElementById("tableContent")
+            tbody.innerHTML += `
+                <tr>
+                    <td> ${inpName}</td>
+                    <td>${inpEmail}</td>
+                    <td>${inpAge}</td>
+                </tr>
+            `
+            document.getElementById("hideData").style.display = "block";
+        })
+    </script>
 </body>
 </html>
