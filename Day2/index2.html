@@ -75,7 +75,7 @@
         <label>Age:</label>
         <input type="number" id="age" required placeholder="Enter your age"><br>
 
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit">Submit</button>
     </form>
 
 </div>
@@ -107,8 +107,11 @@
 </table>
 
 <script>
-    var form = document.getElementById("studentForm");
-    form.addEventListener("submit", handleInput)
+    // var form = document.getElementById("studentForm");
+    // form.addEventListener("submit", handleInput)
+
+    var btn = document.getElementById("submit");
+    btn.addEventListener("click", handleInput);
 
     function handleInput(event){
         event.preventDefault();
