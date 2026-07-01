@@ -1,0 +1,28 @@
+.id-card{
+    border-radius: 5px;
+    width: 250px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.6) 1px 3px 8px;
+    text-align: center;
+    /* border: 2px solid black; */
+}
+
+img{
+    border-radius: 4%;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button{
+    font-size: xx-large;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: aliceblue;
+}
