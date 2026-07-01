@@ -1,136 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Form</title>
-
-<style>
-    body{
-        font-family: "Times New Roman", serif;
-        margin:40px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+    padding:20px;
+    font-family:Arial, sans-serif;
     }
 
-    .container{
-        width:550px;
-        border:1px solid black;
-        padding:30px;
-    }
-
-    table{
-        border-collapse:collapse;
-        width:100%;
-        margin-top:20px;
-    }
-
-    table, th, td{
-        border:1px solid black;
-    }
-
-    th, td{
-        padding:10px;
-        text-align:center;
-        font-size:18px;
-    }
-
-    label{
-        display:inline-block;
-        width:80px;
-        font-size:22px;
-    }
-
-    input{
-        width:300px;
-        height:35px;
-        font-size:20px;
+    div{
         margin-bottom:15px;
     }
 
+    label{
+        display:block;
+        margin-bottom:5px;
+    }
+
+    input{
+        padding:8px;
+        width:250px;
+    }
+
     button{
-        margin-left:110px;
-        width:160px;
-        height:70px;
-        font-size:22px;
-        cursor:pointer;
+        padding:8px 15px;
     }
 
-    h1{
-        margin-top:40px;
-        font-size:48px;
+    table{
+        margin-top:15px;
+        border-collapse:collapse;
     }
-</style>
+
+    th,td{
+        padding:10px;
+    }
+    #hideData{
+        display: none;
+    }
+    </style>
 </head>
-
 <body>
-
-<div class="container">
-
-    <form id="studentForm">
-        <label>Name:</label>
-        <input type="text" id="name" required placeholder="Enter your name"><br>
-
-        <label>Email:</label>
-        <input type="email" id="email" required placeholder="Enter your email"><br>
-
-        <label>Age:</label>
-        <input type="number" id="age" required placeholder="Enter your age"><br>
-
-        <button type="submit" id="submit">Submit</button>
+    <form action="">
+        <div>
+            <label for="">Name</label>
+            <input type="text" id = "name">
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input type="email" id = "email">
+        </div>
+        <div>
+            <label for="">Age</label>
+            <input type="number" id = "age">
+        </div>
+        <div>
+            <button id="submit">Submit</button>
+        </div>
     </form>
-
-</div>
-
-<h1>Students Data</h1>
-
-<table id="studentTable">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Age</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr>
-            <td>Aman</td>
-            <td>aman@gmail.com</td>
-            <td>32</td>
-        </tr>
-
-        <tr>
-            <td>Pratik</td>
-            <td>pratik@gmail.com</td>
-            <td>37</td>
-        </tr>
-    </tbody>
-</table>
-
+    <form action="">
+        <div id="hideData">
+            <h1>Student Data</h1>
+            <table border="4">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContent">
+                    
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
 <script>
-    // var form = document.getElementById("studentForm");
-    // form.addEventListener("submit", handleInput)
+    var btn = document.getElementById("submit")
+    btn.addEventListener("click",function(e){
+        e.preventDefault()
+        var name = document.getElementById("name")
+        var email = document.getElementById("email")
+        var age = document.getElementById("age") 
 
-    var btn = document.getElementById("submit");
-    btn.addEventListener("click", handleInput);
-
-    function handleInput(event){
-        event.preventDefault();
-
-        var name = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var age = document.getElementById("age").value;
-
-        var table = document.getElementById("studentTable").getElementsByTagName("tbody")[0];
-
-        var row = table.insertRow();
-
-        row.insertCell(0).innerHTML = name;
-        row.insertCell(1).innerHTML = email;
-        row.insertCell(2).innerHTML = age;
-
-        document.getElementById("studentForm").reset();
-    }
+        var inpName = name.value 
+        var inpEmail = email.value
+        var inpAge = age.value
+        var tbody = document.getElementById("tableContent")
+        tbody.innerHTML += `
+            <tr>
+                <td> ${inpName}</td>
+                <td>${inpEmail}</td>
+                <td>${inpAge}</td>
+            </tr>
+        `
+        document.getElementById("hideData").style.display = "block";
+    })
 </script>
-
 </body>
 </html>
