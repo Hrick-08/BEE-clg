@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form1">
+        <input type="text" id="name" placeholder="Enter your name">
+        <button type="submit" id="submitBtn">Submit</button>
+        <h1 id="res"></h1>    
+    </form>
+    
+    <form id="form2">
+        <div id="square" style="border: 2px solid black; width: 100px; height: 100px; background-color: black;"></div>
+        <br>
+        <input type="text" id="colour" placeholder="Enter your colour">
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <script>
+        const form1 = document.getElementById('form1');
+        const nameInput = document.getElementById('name');
+        const res = document.getElementById('res');
+        
+        form1.addEventListener('submit', function(e) {
+            e.preventDefault();
+            res.innerHTML = "Hello " + nameInput.value;
+        });
+        
+        const form2 = document.getElementById('form2');
+        const colourInput = document.getElementById('colour');
+        const square = document.getElementById('square');
+
+        form2.addEventListener('submit', function(e) {
+            e.preventDefault();
+            square.style.backgroundColor = colourInput.value;
+            square.style.borderColor = colourInput.value;
+        });
+    </script>
+</body>
+</html>

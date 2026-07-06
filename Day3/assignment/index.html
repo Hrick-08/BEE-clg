@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="colorinput" placeholder="Enter color name">
+    <br><br>
+    <input type="text" id="textinput" placeholder="Enter text">
+    <br><br>
+    <input type="button" value="Change Background" id="bgbutton">
+    <br><br>
+    <input type="button" value="Update Text" id="textcolorbutton">
+    <div id="textdiv" style="width: 200px; height: 100px; border: 1px solid black; margin-top: 20px;">
+        SAMPLE TEXT
+    </div>
+
+    <script>
+        const colorInput = document.getElementById('colorinput');
+        const textInput = document.getElementById('textinput');
+        const bgButton = document.getElementById('bgbutton');
+        const textColorButton = document.getElementById('textcolorbutton');
+        const textDiv = document.getElementById('textdiv');
+
+        function isValidColor(color) {
+            const s = new Option().style;
+            s.color = color;
+            return s.color !== '';
+        }
+
+        bgButton.addEventListener('click', () => {
+            const color = colorInput.value;
+            if(!isValidColor(color)) {
+                alert('Invalid color name!');
+            } else {
+                textDiv.style.backgroundColor = color;
+            }
+        });
+
+        textColorButton.addEventListener('click', () => {
+            const textColor = textInput.value;
+            if(textColor.trim() == '') {
+                alert('Please enter some text!');
+            } else {
+                document.getElementById('textdiv').innerHTML = textInput.value;
+            }
+        });
+    </script>
+</body>
+</html>
