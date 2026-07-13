@@ -1,67 +1,45 @@
-// const response = await fetch("https://dummyjson.com/products")
-// const data = await response.json()
-// console.log(data)
+//Promise
+//Api --> It is an interface through which system can communicate
+//Api bring data from server to frontend
+// https:fakeproducts.com-->raw data 
+//fetch it will pull repsone form an api 
 
-let container = document.querySelector(".products");
+// fetch("url",[get,post,patch,delete])
+let container = document.getElementById("container")
 
-fetch("https://dummyjson.com/products").then(function(res){
-    return res.json();
-}).then(function(data){
-    for(i of data.products){
-        container.innerHTML+=`
-        <div class="product">
-            <h2>${i.title}</h2>
-            <img src="${i.thumbnail}">
-            <h3>$${i.price}</h3>
-            <p>⭐${i.rating}</p>
+fetch("https://dummyjson.com/products").then(function (res) {
+    return res.json()
+}).then(function (data) {
+    // console.log(data.products)
+    for (el of data.products) {
+        container.innerHTML += `
+         <div>
+            <img src="${el.images[0]}" >
+            <h3>${el.title}</h3>
+            <p>Brand :${el.brand}</p>
+            <h3>Price :${el.price}</h3>
+            <button class="cart-btn">add to cart</button>
+            <button class="delete-btn">Delete</button>
         </div>
         `
     }
+    let cartCount = 0
+    let cartCountBtn = document.getElementById("cart-count")
+    let cartbtn = document.querySelectorAll(".cart-btn")
+    for (let el of cartbtn) {
+        el.addEventListener("click", function () {
+            cartCount += 1
+            cartCountBtn.textContent = cartCount
+        })
+    }
+    let deletebtns = document.querySelectorAll(".delete-btn")
+    for (let el of deletebtns) {
+        el.addEventListener("click", function () {
+            el.closest('div').remove()
+        })
+    }
+    
 })
 
-// console.log(products)
-
-// async function getProducts() {
-//     const response = await fetch("https://dummyjson.com/products");
-//     const data = await response.json();
-
-//     const products = data.products;
-
-//     const container = document.querySelector(".products");
-
-//     products.forEach(product => {
-//         container.innerHTML += `
-//             <div class="product">
-//                 <h2>${product.title}</h2>
-//                 <img src="${product.thumbnail}">
-//                 <h3>$${product.price}</h3>
-//                 <p>⭐ ${product.rating}</p>
-//             </div>
-//         `;
-//     });
-// }
-
-// getProducts();
-
-// async function getProducts() {
-//     const response = await fetch("https://dummyjson.com/products");
-//     const data = await response.json();
-
-//     const container = document.querySelector(".products");
-
-//     let html = "";
-
-//     data.products.forEach(product => {
-//         html += `
-//             <div class="product">
-//                 <img src="${product.thumbnail}" alt="${product.title}">
-//                 <h2>${product.title}</h2>
-//                 <p>$${product.price}</p>
-//             </div>
-//         `;
-//     });
-
-//     container.innerHTML = html;
-// }
-
-// getProducts();
+//fetch -->you will require 'then' method 2 times
+// res-->raw json format data , we need to convert then into objects
