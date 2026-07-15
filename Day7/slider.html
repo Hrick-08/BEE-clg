@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 100%;
+            border: 1px solid red;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Slider Page</h1>
+    <div id="container">
+        <img id = "movie", src = "https://m.media-amazon.com/images/M/MV5BY2ZiODdiMzMtYzU2Yy00ZWNlLWIyNGQtZjc0ZmFhZGRkNjZhXkEyXkFqcGc@._V1_.jpg", height="100%", width="100%">
+    </div>
+
+    <script>
+        let posters = [
+            "https://m.media-amazon.com/images/M/MV5BZDYxY2I1OGMtN2Y4MS00ZmU1LTgyNDAtODA0MzAyYjI0N2Y2XkEyXkFqcGc@._V1_.jpg",
+            "https://m.media-amazon.com/images/M/MV5BMTZkMjBjNWMtZGI5OC00MGU0LTk4ZTItODg2NWM3NTVmNWQ4XkEyXkFqcGc@._V1_.jpg",
+            "https://m.media-amazon.com/images/M/MV5BY2ZiODdiMzMtYzU2Yy00ZWNlLWIyNGQtZjc0ZmFhZGRkNjZhXkEyXkFqcGc@._V1_.jpg"
+        ]
+
+        let imgMov = document.getElementById("movie"); 
+        let idx = -1;
+
+        setInterval(() => {
+            idx++;
+            imgMov.src = posters[idx];
+            if(idx==posters.length-1){
+                idx = -1;
+            }
+        },1000)
+    </script>
+</body>
+</html>
