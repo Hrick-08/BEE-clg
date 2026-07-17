@@ -1,0 +1,47 @@
+{
+  "students": [
+    {
+      "name": "Hrick",
+      "email": "hritabratadas8@gmail.com",
+      "age": 21,
+      "id": "Uv7D7G-ja4o"
+    },
+    {
+      "name": "Hrick",
+      "email": "hritabratadas8@gmail.com",
+      "age": 21,
+      "id": "JG31v0QMVtY"
+    },
+    {
+      "name": "Hrick",
+      "email": "hritabratadas8@gmail.com",
+      "age": 21,
+      "id": "7wEYs9IiSd8"
+    },
+    {
+      "name": "Hrick",
+      "email": "hritabratadas8@gmail.com",
+      "age": 21,
+      "id": "F2z_Il27zCY"
+    },
+    {
+      "id": "lL-P4FL5E6g",
+      "name": "Hrick2",
+      "email": "hrick2@gmail.com",
+      "age": 21
+    },
+    {
+      "name": "Hrick2",
+      "email": "hrick2@gmail.com",
+      "age": 21,
+      "id": "XwniTpj1wb0"
+    },
+    {
+      "name": "Hrick2",
+      "email": "hrick2@gmail.com",
+      "age": 21,
+      "id": "y92V98aMOi8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
