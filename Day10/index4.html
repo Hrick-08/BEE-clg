@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Login System</h1>
+    <input id="admin" type="text">
+    <br>
+    <input id="pass" type="number">
+    <br>
+    <button onclick="check()">Check</button>
+    <p id="res"></p>
+
+    <script>
+        let result = document.getElementById("res");
+        function check() {
+            let ad = document.getElementById("admin").value;
+            let pass = document.getElementById("pass").value;
+            if (ad=="admin" && pass==12345) {
+                result.innerHTML = "Login Successful";
+                result.style.color = "green"
+            }
+           
+            else {
+                result.innerHTML = "Invalud Crednetials";
+                 result.style.color = "red"
+            }
+        }
+    </script>
+</body>
+
+</html>

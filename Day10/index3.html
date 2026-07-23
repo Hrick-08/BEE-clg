@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Marks Calulator</h1>
+    <input id="marks" type="number">
+    <button onclick="check()">Check</button>
+    <p id="res"></p>
+
+    <script>
+        let result = document.getElementById("res");
+        function check() {
+            let mark = document.getElementById("marks").value;
+            if (mark >= 90) {
+                result.innerHTML = "A+";
+                result.style.color = "green"
+            }
+            else if (mark >= 75) {
+                result.innerHTML = "A";
+                result.style.color = "yellow"
+            }
+            else if (mark >= 60) {
+                result.innerHTML = "B";
+                result.style.color = "blue"
+            }
+            else if (mark >= 40) {
+                result.innerHTML = "C";
+                result.style.color = "orange"
+            }
+            else {
+                result.innerHTML = "Fail";
+                 result.style.color = "red"
+            }
+        }
+    </script>
+</body>
+
+</html>

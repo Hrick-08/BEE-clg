@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Checker</title>
+</head>
+<body>
+    <h1>Password Length Checker</h1>
+
+    <input id="pass" type="text">
+    <button onclick="check()">Check</button>
+    <p id="res"></p>
+
+    <script>
+        let result = document.getElementById("res");
+        function check() {
+            let pass = document.getElementById("pass").value;
+            if (pass.length < 8) {
+                result.innerHTML = "Weak Password";
+            } 
+            else if (pass.length >= 8 && pass.length < 12) {
+                result.innerHTML = "Good Password";
+            } 
+            else {
+                result.innerHTML = "Strong Password";
+            }
+        }
+    </script>
+</body>
+</html>

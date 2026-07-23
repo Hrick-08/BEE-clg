@@ -1,0 +1,115 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            background-color: gray;
+            color: white;
+        }
+
+        #clear {
+            background-color: gray;
+        }
+
+        #res {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <h2>Simple Calculator</h2>
+
+        <input id="num1" type="number" placeholder="Enter First Number">
+        <input id="num2" type="number" placeholder="Enter Second Number">
+
+        <div class="buttons">
+            <button onclick="addcheck()">Add</button>
+            <button onclick="subcheck()">Subtract</button>
+            <button onclick="mulcheck()">Multiply</button>
+            <button onclick="divcheck()">Divide</button>
+        </div>
+
+        <button id="clear" onclick="clearcheck()" style="margin-top:15px; width:100%;">
+            Clear
+        </button>
+
+        <p id="res"></p>
+    </div>
+    <script>
+        let result = document.getElementById("res");
+        function addcheck() {
+            let add1 = Number(document.getElementById("num1").value)
+            let add2 = Number(document.getElementById("num2").value)
+            result.innerHTML = "Result: " + (add1 + add2);
+        }
+        function subcheck() {
+            let add1 = Number(document.getElementById("num1").value)
+            let add2 = Number(document.getElementById("num2").value)
+            result.innerHTML = "Result: " + (add1 - add2);
+        }
+        function mulcheck() {
+            let add1 = Number(document.getElementById("num1").value)
+            let add2 = Number(document.getElementById("num2").value)
+            result.innerHTML = "Result: " + (add1 * add2);
+        }
+        function divcheck() {
+            let add1 = Number(document.getElementById("num1").value)
+            let add2 = Number(document.getElementById("num2").value)
+            result.innerHTML = "Result: " + (add1 / add2);
+        }
+        function clearcheck() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            result.innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>
