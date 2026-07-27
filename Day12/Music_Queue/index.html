@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        #container {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="card" style="width: 500px;">
+            <div class="card-body">
+                <h3>🎵 Music Queue</h3>
+                <h5 id="playing">Now Playing: None</h5>
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" id="songvalue"
+                        aria-describedby="addon-wrapping">
+                </div>
+                <div style="margin-top: 20px;">
+                    <button type="button" onclick="addsong()" class="btn btn-primary btn-sm">Add Song</button>
+                    <button type="button" class="btn btn-success btn-sm" onclick="playSong()">Play Song</button>
+                </div>
+                <div id="player" style="margin-top: 20px;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let songs = ["Tere naina", "Believer"];
+        
+        let player = document.getElementById("player");
+        let songInp =  document.getElementById("songvalue")
+
+        let addsong = () =>{
+            songs.push(songInp.value);
+            renderSongs();
+        }
+
+        let playSong=() =>{
+            let firstSong =  songs.shift()
+            let playing = document.getElementById("playing")
+            playing.innerHTML = `Now Playing: ${firstSong}`
+            renderSongs()
+        }
+
+        let renderSongs = () => {
+            player.innerHTML =""
+            songs.forEach((el, idx) => {
+                player.innerHTML += `
+                    <p style="border-bottom: 1px solid black">${idx + 1}. ${el}</p>
+                `
+            })
+        }
+        renderSongs();
+
+    </script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
+</body>
+
+</html>
