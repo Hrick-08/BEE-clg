@@ -30,15 +30,15 @@
                     <button type="button" onclick="addsong()" class="btn btn-primary btn-sm">Add Song</button>
                     <button type="button" class="btn btn-success btn-sm" onclick="playSong()">Play Song</button>
                 </div>
-                <div id="player" style="margin-top: 20px;">
-
+                <div id="player" style="margin-top: 20px; width:100%">
+                    
                 </div>
             </div>
         </div>
     </div>
     <script>
         let songs = ["Tere naina", "Believer"];
-        
+
         let player = document.getElementById("player");
         let songInp =  document.getElementById("songvalue")
 
@@ -54,11 +54,19 @@
             renderSongs()
         }
 
+        let deleteSong=(idx) =>{
+            songs.splice(idx,1);
+            renderSongs();
+        }
+
         let renderSongs = () => {
             player.innerHTML =""
             songs.forEach((el, idx) => {
                 player.innerHTML += `
-                    <p style="border-bottom: 1px solid black">${idx + 1}. ${el}</p>
+                <div style="display:flex">
+                    <p style="border-bottom: 1px solid black; width:100%">${idx + 1}. ${el}</p>
+                    <button onclick="deleteSong(${idx})" style="border: none; background: none; cursor: pointer; font-size: 20px; margin-bottom: 10px">🗑️</button>
+                </div>
                 `
             })
         }
