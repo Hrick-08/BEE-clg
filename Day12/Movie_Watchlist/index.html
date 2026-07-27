@@ -20,24 +20,27 @@
     <div id="container">
         <div class="card" style="width: 500px;">
             <div class="card-body">
-                <h3>🎵 Music Queue</h3>
-                <h5 id="playing">Now Playing: None</h5>
+                <h3>🎥 Movie Wishlist 🍿</h3>
                 <div class="input-group flex-nowrap">
-                    <input type="text" class="form-control" placeholder="music..." aria-label="Username" id="songvalue"
+                    <input type="text" class="form-control" placeholder="movie..." aria-label="Username" id="songvalue"
                         aria-describedby="addon-wrapping">
                 </div>
                 <div style="margin-top: 20px;">
-                    <button type="button" onclick="addsong()" class="btn btn-primary btn-sm">Add Song</button>
-                    <button type="button" class="btn btn-success btn-sm" onclick="playSong()">Play Song</button>
+                    <button type="button" onclick="addsong()" class="btn btn-primary btn-sm">Add Movie</button>
+                    <button type="button" class="btn btn-warning btn-sm" onclick="addFav()">Add Favourite</button>
                 </div>
                 <div id="player" style="margin-top: 20px; width:100%">
+                    
+                </div>
+                <div id="player2" style="margin-top: 20px; width:100%">
                     
                 </div>
             </div>
         </div>
     </div>
     <script>
-        let songs = ["Tere naina", "Believer"];
+        let songs = ["Avatar", "Dhurandhar"];
+        let favs = [];
 
         let player = document.getElementById("player");
         let songInp =  document.getElementById("songvalue")
@@ -47,16 +50,19 @@
             renderSongs();
         }
 
-        let playSong=() =>{
-            let firstSong =  songs.shift()
-            let playing = document.getElementById("playing")
-            playing.innerHTML = `Now Playing: ${firstSong}`
-            renderSongs()
+        let addFav = () =>{
+            favs.push(songInp.value);
+            renderFavs();
         }
 
         let deleteSong=(idx) =>{
             songs.splice(idx,1);
             renderSongs();
+        }
+
+        let deleteFav=(idx) =>{
+            favs.splice(idx,1);
+            renderFavs();
         }
 
         let renderSongs = () => {
@@ -71,6 +77,19 @@
             })
         }
         renderSongs();
+
+        let renderFavs = () => {
+            player2.innerHTML =""
+            favs.forEach((el, idx) => {
+                player2.innerHTML += `
+                <div style="display:flex">
+                    <p style="border-bottom: 1px solid black; width:100%">${idx + 1}. ${el}</p>
+                    <button onclick="deleteFav(${idx})" style="border: none; background: none; cursor: pointer; font-size: 20px; margin-bottom: 10px">🗑️</button>
+                </div>
+                `
+            })
+        }
+        renderFavs();
 
     </script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
