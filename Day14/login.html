@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f4f4f4;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+
+            <!-- Login Form -->
+            <div class="col-md-5">
+                <div class="card shadow">
+                    <div class="card-body">
+
+                        <h3 class="text-center mb-4">Login Page</h3>
+
+                        <form id="studentForm" onsubmit="handleSubmit(event)">
+
+                            <input type="email"
+                                   id="email"
+                                   class="form-control mb-3"
+                                   placeholder="Enter Email"
+                                   required>
+
+                            <input type="password"
+                                   id="password"
+                                   class="form-control mb-3"
+                                   placeholder="Enter Password"
+                                   required>
+
+                            <button class="btn btn-primary w-100">
+                                Submit
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Local Storage Display -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Local Storage</h4>
+                    </div>
+                    <div class="card-body">
+                        <pre id="storage"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showLocalStorage() {
+
+            let data = localStorage.getItem("users");
+
+            if (data) {
+                document.getElementById("storage").textContent =
+                    JSON.stringify(JSON.parse(data), null, 2);
+            } else {
+                document.getElementById("storage").textContent =
+                    "No users in localStorage";
+            }
+
+        }
+
+        window.onload = showLocalStorage;
+
+        function handleSubmit(event) {
+
+            event.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let users_data = localStorage.getItem("users");
+
+            let users_array = [];
+
+            if (users_data) {
+                users_array = JSON.parse(users_data);
+            }
+
+            let user = users_array.find(
+                (el) => el.email === email && el.pass === password
+            );
+
+            if (user) {
+                alert("Login successful!");
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+
+            showLocalStorage();
+        }
+
+    </script>
+
+</body>
+
+</html>
