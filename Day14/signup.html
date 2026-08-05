@@ -110,14 +110,27 @@
                 u => u.email === user.email
             );
 
+            let usernameExists = users_array.some(
+                u => u.name === user.name
+            );
+
+            if (usernameExists) {
+
+                alert("Username already exists. Please choose a different username.");
+
+                showLocalStorage();
+
+                return;
+            }
+
             if (emailExists) {
 
-                alert("User already exists. Please login.");
+                alert("Email already exists. Please login.");
 
                 showLocalStorage();
 
                 // Uncomment to redirect
-                // window.location.href = "login.html";
+                window.location.href = "login.html";
 
                 return;
             }

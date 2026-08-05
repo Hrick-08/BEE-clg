@@ -113,7 +113,11 @@
             );
 
             if (user) {
-                alert("Login successful!");
+                //alert("Login successful!");
+                localStorage.setItem("current_user", JSON.stringify(user));
+                localStorage.setItem("isLoggedIn", "true");
+                alert("User Loggin in Successfully");
+                window.location.href="products.html";
             } else {
                 alert("Invalid email or password. Please try again.");
             }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+
+        <div>
+            <h1>Welcome to Product Page</h1>
+            <h3>User: <span id="username"></span></h3>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+    </div>
+
+    <div id="falseUser"></div>
+    
+</body>
+
+</html>
+<script>
+    
+    // check first whether user is logged in or not
+
+    let checkStatus = localStorage.getItem("isLoggedIn")
+    let container = document.getElementById("container")
+    let falseUser = document.getElementById("falseUser")
+    console.log(checkStatus)
+    if(checkStatus == "true"){
+
+        container.style.display = "block"; //show content
+        let user = JSON.parse(localStorage.getItem("current_user"));
+        document.getElementById("username").innerText = user.name;
+    }
+    else{
+        
+        container.style.display = "none"; //hide content
+        falseUser.innerHTML = `
+        <h1>Please login first </h1>
+        <a href="login.html">Login</a>
+        `
+    }
+
+    function logout(){
+        localStorage.removeItem("current_user");
+        localStorage.setItem("isLoggedIn", "false");
+        window.location.href = "login.html";
+    }
+
+</script>
