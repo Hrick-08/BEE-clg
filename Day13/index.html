@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        #card{
+            background-color: antiquewhite;
+            font-style: oblique;
+            /* text-align: center; */
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <form id="regCard">
+        <input type="text" placeholder="Name" id="name">
+        <br>
+        <input type="number" placeholder="Age" id="age">
+        <br>
+        <input type="text" placeholder="Course" id="course">
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="card">
+        <h1>Name:</h1>
+        <h1>Age:</h1>
+        <h1>Course:</h1>
+    </div>
+
+    <script>
+        let name = document.getElementById("name");
+        let age = document.getElementById("age");
+        let course = document.getElementById("course");
+        let form = document.getElementById("regCard");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            let student = {
+                name : "",
+                age : 0,
+                course : ""
+            }
+            student.name = name.value;
+            student.age = age.value;
+            student.course = course.value;
+
+            console.log("Form submitted");
+            console.log(student);
+            card = document.getElementById("card");
+            card.innerHTML = `
+                <h1>Name: ${student.name}</h1>
+                <h1>Age: ${student.age}</h1>
+                <h1>Course: ${student.course}</h1>
+            `
+        });
+    </script>
+</body>
+</html>

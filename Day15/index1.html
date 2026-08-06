@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow">
+                    <div class="card-body">
+
+                        <h1 class="text-center mb-4">📝 Notes</h1>
+
+                        <textarea
+                            id="note"
+                            class="form-control"
+                            rows="10"
+                            placeholder="Write your note here..."></textarea>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                            <button id="add" class="btn btn-primary" onclick="addNotes(event)">
+                                Add Note
+                            </button>
+
+                            <button id="load" class="btn btn-success" onclick="loadNotes(event)">
+                                Load Notes
+                            </button>
+
+                            <button id="clear" class="btn btn-danger" onclick="clearNotes(event)">
+                                Clear Notes
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let notes = [];
+        let container = document.getElementById("note");
+
+        let arr = localStorage.getItem("notes");
+        if(arr != null){
+            notes = JSON.parse(arr);
+        }
+        
+        function addNotes(event){
+            event.preventDefault();
+            let note = container.value.trim();
+            if (note === "") return;
+            notes.push(note);
+            localStorage.setItem("notes",JSON.stringify(notes));
+            container.value = "";
+        }
+
+        function loadNotes(event){
+            event.preventDefault();
+            container.value = "";
+            notes.forEach(el => {
+                container.value += el;
+            });
+        }
+
+        window.onload = load;
+
+        function clearNotes(event){
+            event.preventDefault();
+            localStorage.removeItem("notes");
+            notes = [];
+            container.value = "";
+        }
+
+    </script>
+</body>
+</html>
