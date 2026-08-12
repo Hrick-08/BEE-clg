@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        #showdiv {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+
+                <div class="card shadow">
+                    <div class="card-body p-4">
+
+                        <h2 class="text-center mb-4">User Preferences</h2>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-semibold">Enter Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" id="name">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="color" class="form-label fw-semibold">Enter Color</label>
+                            <input type="text" class="form-control" placeholder="Enter Color" id="color">
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary" onclick="savepreference()">
+                                Save Preferences
+                            </button>
+                        </div>
+
+                        <div id="showdiv" class="text-center mt-4 text-primary"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let savepreference = () => {
+
+        let username = document.getElementById("name").value;
+
+        let color = document.getElementById("color").value;
+
+        localStorage.setItem("name", username);
+
+        localStorage.setItem("color", color);
+
+        document.getElementById("showdiv").innerText = "Welcome, " + username + "!";
+
+        document.body.style.backgroundColor = color;
+
+    }
+
+    window.onload = function () {
+
+        let savedname = localStorage.getItem("name");
+        let savedcolor = localStorage.getItem("color");
+
+        if (savedname != null) {
+
+            document.getElementById("showdiv").innerText = "Welcome, " + savedname + "!";
+            document.getElementById("name").value = savedname;
+
+        }
+
+        if (savedcolor != null) {
+
+            document.body.style.backgroundColor = savedcolor;
+            document.getElementById("color").value = savedcolor;
+        }
+
+    }
+
+</script>
