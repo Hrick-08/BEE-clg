@@ -1,8 +1,11 @@
 const express = require("express");
+
 const {connection} = require("./config/db.js");
+const {routes} = require("./routes/student.routes.js");
 
 const app = express();
 app.use(express.json());
+app.use("/", routes);
 
 app.listen(8000, async () => {
   try {
@@ -13,4 +16,3 @@ app.listen(8000, async () => {
     console.error("Error starting server:", error);
   }
 })
-
