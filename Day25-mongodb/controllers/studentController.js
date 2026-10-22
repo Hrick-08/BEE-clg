@@ -37,4 +37,49 @@ const deleteStudent = async (req, res) => {
   }
 };
 
-module.exports = { createStudent, getStudents, deleteStudent };
+const getSingleStudent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const data = await Student.findById(id);
+    if (!data) {
+      return res.status(404).send({ message: "Student not found" });
+    }
+    res.status(200).send({
+      message: "Student retrieved successfully",
+      data
+    });
+  } catch (error) {
+    res.send({ message: error.message });
+  }
+};
+
+const updateStudent = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const data = await Student.findByIdAndUpdate(
+      id,
+      req.body,
+      {
+        returnDocument: 'after'
+      }
+    );
+
+    if (!data) {
+      return res.status(404).send({
+        message: "Student not found"
+      });
+    }
+
+    res.status(200).send({
+      message: "Student updated successfully",
+      data
+    });
+  } catch (error) {
+    res.status(500).send({
+      message: error.message
+    });
+  }
+};
+
+module.exports = { createStudent, getStudents, deleteStudent, getSingleStudent, updateStudent };
